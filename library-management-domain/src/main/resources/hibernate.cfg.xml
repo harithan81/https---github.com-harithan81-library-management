@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.SQLServer2008Dialect</property>
+		<property name="hibernate.connection.driver_class">net.sourceforge.jtds.jdbc.Driver</property>
+		<!-- Assume test is the database name -->
+		<property name="hibernate.connection.url">jdbc:jtds:sqlserver://LNAR-PBV1W72:51506/chorus;instance=BOREDDYS</property>
+		<property name="hibernate.default_schema">dbo</property>
+		<property name="hibernate.connection.username">sysusr</property>
+		<property name="hibernate.connection.password">cde34rfv</property>
+
+	</session-factory>
+</hibernate-configuration>
