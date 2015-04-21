@@ -8,4 +8,11 @@
 		<relativePath>../library-management-parent</relativePath>
 	</parent>
 	<artifactId>library-management-services</artifactId>
+	<dependencies>
+		<dependency>
+			<artifactId>library-management-domain</artifactId>
+			<groupId>library-management</groupId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 </project>
