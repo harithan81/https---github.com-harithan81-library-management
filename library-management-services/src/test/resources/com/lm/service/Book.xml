@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+	<BOOKTYPE bookTypeId="1" name="Adeventure" />
+	<BOOK bookId="1" bookName="The Alchemist" />
+	<BOOKBOOKTYPEXREF bookId="1" bookTypeId="1" />
+
+</dataset>

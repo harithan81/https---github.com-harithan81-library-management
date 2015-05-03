@@ -16,7 +16,7 @@
 			</pattern>
 		</encoder>
 	</appender>
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="fileAppender" />
 		<appender-ref ref="STDOUT" />
 	</root>
