@@ -16,7 +16,10 @@
 			</pattern>
 		</encoder>
 	</appender>
-	<root level="debug">
+	
+	<logger name="org.springframework.transaction" level="debug" />
+	
+	<root level="info">
 		<appender-ref ref="fileAppender" />
 		<appender-ref ref="STDOUT" />
 	</root>

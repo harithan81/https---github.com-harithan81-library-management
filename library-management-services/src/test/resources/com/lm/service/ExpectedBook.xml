@@ -2,7 +2,7 @@
 <dataset>
 
 	<BOOKTYPE bookTypeId="1" name="Adeventure" />
-	<BOOK bookId="1" bookName="The Alchemist" authorName="Paulo Coelho" isbn="ISBN 0-06-250217-4"/>
+	<BOOK bookId="1" bookName="The Alchemist" />
 	<BOOKBOOKTYPEXREF bookId="1" bookTypeId="1" />
 
 </dataset>
