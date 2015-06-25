@@ -7,5 +7,49 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../library-management-parent</relativePath>
 	</parent>
-	<artifactId>library-management-web</artifactId>	
+	<artifactId>library-management-web</artifactId>
+	<properties>
+		<spring.web.version>4.1.6.RELEASE</spring.web.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.web.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>library-management</groupId>
+			<artifactId>library-management-services</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.10</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>9.2.11.v20150529</version>
+					<configuration>
+						<scanIntervalSeconds>10</scanIntervalSeconds>
+						<webApp>
+							<contextPath>/LM</contextPath>
+							<descriptor>${basedir}/src/test/resources/WEB-INF/test-web.xml</descriptor>
+						</webApp>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 </project>
