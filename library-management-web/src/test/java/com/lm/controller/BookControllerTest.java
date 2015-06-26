@@ -22,7 +22,8 @@ import com.lm.domain.gen.Book;
 import com.lm.service.BookService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "classpath:test-spring-resources.xml", "classpath:spring-services.xml" })
+@ContextConfiguration({ "classpath:test-spring-resources.xml", "classpath:spring-services.xml",
+		"file:src/main/resources/webapp/WEB-INF/dispatcher-servlet.xml" })
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @WebAppConfiguration
