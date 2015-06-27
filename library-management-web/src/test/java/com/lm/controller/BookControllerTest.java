@@ -30,7 +30,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
 		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @WebAppConfiguration
-public class CopyOfBookControllerTest {
+public class BookControllerTest {
 
 	private MockMvc mockmvc;
 
