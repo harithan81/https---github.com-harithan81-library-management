@@ -28,6 +28,7 @@ public class BookServiceTest {
 	@Autowired
 	private BookService bookService;
 
+	
 	@Test
 	@DatabaseSetup("Book.xml")
 	public void findOne() {
