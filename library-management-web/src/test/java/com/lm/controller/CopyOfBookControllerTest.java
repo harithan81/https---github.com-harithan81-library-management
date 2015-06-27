@@ -23,6 +23,7 @@ import org.springframework.web.context.WebApplicationContext;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({ "classpath:test-spring-resources.xml", "classpath:spring-services.xml",
 		"file:src/main/resources/webapps/WEB-INF/dispatcher-servlet.xml" })
