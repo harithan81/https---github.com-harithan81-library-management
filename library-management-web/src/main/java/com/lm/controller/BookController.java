@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,15 +22,13 @@ import com.lm.domain.gen.QBook;
 import com.lm.service.BookService;
 import com.mysema.query.BooleanBuilder;
 
-
-
 @Controller
 @RequestMapping("/book")
 public class BookController {
 
 	@Autowired
 	private BookService bookService;
-	
+
 	private Logger log = LoggerFactory.getLogger(BookController.class);
 
 	@RequestMapping(method = RequestMethod.GET, value = "{bookId}")
@@ -84,5 +83,12 @@ public class BookController {
 		Page<Book> books = new PageImpl<Book>(listOfBooks);
 		return books;
 
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
+	public Book createBook(@RequestBody Book book) {
+		log.info("Provided book:" + book);
+		return bookService.createBook(book);
 	}
 }
