@@ -21,6 +21,8 @@ import com.lm.domain.gen.QBook;
 import com.lm.service.BookService;
 import com.mysema.query.BooleanBuilder;
 
+
+
 @Controller
 @RequestMapping("/book")
 public class BookController {
