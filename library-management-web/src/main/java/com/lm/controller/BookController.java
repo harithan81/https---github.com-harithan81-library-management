@@ -27,6 +27,7 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	
 	private Logger log = LoggerFactory.getLogger(BookController.class);
 
 	@RequestMapping(method = RequestMethod.GET, value = "{bookId}")
