@@ -1,9 +1,13 @@
 package com.lm.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,11 +34,13 @@ public class BookController {
 	public Book findOne(@PathVariable int bookId) {
 		Book book = bookService.findOne(bookId);
 		log.info("Book Name:{}", book.getBookName());
+
 		Book b = new Book();
 		b.setAuthorName(book.getAuthorName());
 		b.setBookName(book.getBookName());
 		b.setIsbn(book.getIsbn());
 		b.setBookId(book.getBookId());
+
 		return b;
 	}
 
@@ -60,7 +66,19 @@ public class BookController {
 			builder.and(qBook.isbn.eq(isbn));
 		}
 
-		Page<Book> books = bookService.findAll(builder, new PageRequest(0, 50));
+		Page<Book> pageOfBooks = bookService.findAll(builder, new PageRequest(0, 50));
+		List<Book> listOfBooks = new ArrayList<Book>();
+
+		for (Book book : pageOfBooks.getContent()) {
+			Book b = new Book();
+			b.setBookId(book.getBookId());
+			b.setBookName(book.getAuthorName());
+			b.setAuthorName(book.getAuthorName());
+			b.setIsbn(book.getIsbn());
+			listOfBooks.add(b);
+
+		}
+		Page<Book> books = new PageImpl<Book>(listOfBooks);
 		return books;
 
 	}

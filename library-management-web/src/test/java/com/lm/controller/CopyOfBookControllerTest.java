@@ -52,6 +52,7 @@ public class CopyOfBookControllerTest {
 	@DatabaseSetup("Book.xml")
 	public void findAll() throws Exception {
 		ResultActions resultActions = mockmvc.perform(get("/book?bookName=The Alchemist&authorName=Paulo Coelho&isbn=ISBN 0-06-250217-4"));
-		resultActions.andExpect(status().isOk());
+		System.out.println(resultActions.andReturn().getResponse().getContentAsString());
+		resultActions.andExpect(status().is2xxSuccessful());
 	}
 }
