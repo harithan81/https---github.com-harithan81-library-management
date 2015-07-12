@@ -2,7 +2,10 @@ package com.lm.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,12 +16,16 @@ import com.lm.repository.BookRepository;
 import com.mysema.query.types.Predicate;
 
 @Service
+@Transactional
 public class BookService {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 	@Autowired
+	private UserActivityService userActivityService;
+	@Autowired
 	private BookRepository bookRepository;
+	Logger log = LoggerFactory.getLogger(BookService.class);
 
 	public Book findOne(int bookId) {
 		return bookRepository.findOne(bookId);
@@ -31,6 +38,18 @@ public class BookService {
 
 	public Book createBook(Book book) {
 		return bookRepository.saveAndFlush(book);
+	}
+
+	public Book borrowBook(int bookId) {
+
+		Book book = bookRepository.findOne(bookId);
+		log.info("version:{}", book.getVersion());
+		log.info("Count is:{}", book.getBookCount());
+		book.setBookCount(book.getBookCount() - 1);
+		bookRepository.saveAndFlush(book);
+		userActivityService.updateUserActivity(book);
+		return book;
+
 	}
 
 }
