@@ -10,5 +10,6 @@
 	<BOOKSTATUSES bookStatusId="3" name="Returned"/> 
 	<USER USER_ID="harithan" version="1" firstName="Haritha" lastName="Kaarnati" gender="F" birthDate="Aug1989"/>
 	<USERACTIVITY userActivityID="1" version="1" bookId="1" bookStatusId="1" USERID="harithan" renewalCount="2"/>
+	<USERACTIVITY userActivityID="1" version="2" bookId="1" bookStatusId="2" USERID="harithan" renewalCount="3"/>
 	
 	</dataset>

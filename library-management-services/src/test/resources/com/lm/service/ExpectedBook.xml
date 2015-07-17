@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
 
-	<BOOKTYPE bookTypeId="1" name="Adeventure" />
-	<BOOK bookId="1" bookName="The Alchemist" />
-	<BOOKBOOKTYPEXREF bookId="1" bookTypeId="1" />
+	<BOOKTYPE BOOKTYPEID="1" NAME="Adeventure" />
+	<BOOK BOOKID="1" VERSION="1" BOOKNAME="The Alchemist" AUTHORNAME="Paulo Coelho" ISBN="ISBN 0-06-250217-4" BOOKCOUNT="3"/>
+	<BOOK BOOKID="2" VERSION="1" BOOKNAME="Chandamama" AUTHORNAME="Kaarnati" ISBN="ISBN 0-06-250217-6" BOOKCOUNT="3"/>
+	<BOOKBOOKTYPEXREF BOOKID="1" BOOKTYPEID="1" />
 
 </dataset>

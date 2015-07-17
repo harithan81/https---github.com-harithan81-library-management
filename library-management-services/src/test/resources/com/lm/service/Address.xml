@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<USER USER_ID="harithan" version="1" firstName="Haritha" lastName="Kaarnati"
+		gender="F" birthDate="Aug1989" />
+
+	<ADDRESS addressId="1" streetAddress1="2363-2R" streetAddress2="85th Street"
+		city="Brooklyn" zipCode="11214" state="Ny" mobileNumber="2016852110" USERID="harithan" />
+</dataset>

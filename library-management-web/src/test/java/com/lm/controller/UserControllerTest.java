@@ -36,7 +36,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 		TransactionalTestExecutionListener.class,
 		DbUnitTestExecutionListener.class })
 @WebAppConfiguration
-public class BookControllerTest {
+public class UserControllerTest {
 
 	private MockMvc mockmvc;
 
@@ -51,46 +51,24 @@ public class BookControllerTest {
 	private Logger log = LoggerFactory.getLogger(BookControllerTest.class);
 
 	@Test
-	@DatabaseSetup("Book.xml")
+	@DatabaseSetup("User.xml")
 	public void findOne() throws Exception {
-		MvcResult result = mockmvc.perform(get("/book/1")).andReturn();
+		MvcResult result = mockmvc.perform(get("/user/harithan")).andReturn();
 		System.out.println(result.getResponse().getContentAsString());
 	}
 
 	@Test
-	@DatabaseSetup("Book.xml")
-	public void findAll() throws Exception {
-		ResultActions resultActions = mockmvc.perform(get("/book")
-				.param("bookId", "1").param("bookName", "The Alchemist")
-				.param("authorName", "Paulo Coelho")
-				.param("isbn", "ISBN 0-06-250217-4"));
-		System.out.println(resultActions.andReturn().getResponse()
-				.getContentAsString());
-		resultActions.andExpect(status().is2xxSuccessful());
-	}
-
-	@Test
-	@DatabaseSetup("Book.xml")
-	public void createBook() throws Exception {
+	@DatabaseSetup("User.xml")
+	public void createUser() throws Exception {
 		ResultActions resultActions = mockmvc
-				.perform(post("/book")
+				.perform(post("/user")
 						.content(
-								"{\"bookId\": 2, \"bookName\": \"Sherlock Holmes\",  \"authorName\": \"Haritha\", \"isbn\": \"ISBN 0-06-250217-6\",  \"bookTypes\": [],  \"userActivities\": []}\"")
+								"{\"userId\": 2,  \"version\": 1,  \"firstName\": \"Subhash\", \"lastName\": \"Boreddy\",  \"gender\": \"M\",  \"birthDate\": \"Dec1985\"}\"")
 						.contentType(MediaType.APPLICATION_JSON));
 		resultActions.andExpect(status().is2xxSuccessful());
-		log.info("Book created:{}.", resultActions.andReturn().getResponse()
+		log.info("User created:{}.", resultActions.andReturn().getResponse()
 				.getContentAsString());
 
 	}
 
-	@Test
-	@DatabaseSetup("Book.xml")
-	public void borrowBook() throws Exception {
-		ResultActions resultActions = mockmvc.perform(post("/book/3/borrow"));
-		resultActions.andExpect(status().is2xxSuccessful());
-		log.info("Borrowed Book:{}.", resultActions.andReturn().getResponse()
-				.getContentAsString());
-	}
-	
-	
 }

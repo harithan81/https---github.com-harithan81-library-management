@@ -15,21 +15,24 @@ import com.lm.domain.gen.User;
 import com.lm.domain.gen.UserActivity;
 import com.lm.repository.BookStatusesRepository;
 import com.lm.repository.UserActivityRepository;
+import com.lm.repository.UserRepository;
 
 @Service
 @Transactional
 public class UserActivityService {
 	DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-	
+
 	@Autowired
-	UserActivityRepository userActivityRepository;
+	private UserActivityRepository userActivityRepository;
 	@Autowired
-	BookStatusesService bookStatusesService;
+	private BookStatusesService bookStatusesService;
 	@Autowired
-	BookStatusesRepository bookStatusesRepository;
+	private BookStatusesRepository bookStatusesRepository;
 	@Autowired
-	UserService userService;
-	
+	private UserService userService;
+	@Autowired
+	private UserRepository userRepository;
+
 	public UserActivity findOne(int userActivityId) {
 		return userActivityRepository.findOne(userActivityId);
 
@@ -52,7 +55,6 @@ public class UserActivityService {
 		return dueDate;
 	}
 
-	
 	public UserActivity updateUserActivity(Book book) {
 		User user = new User();
 		user.setUserId("harithan");
@@ -62,16 +64,29 @@ public class UserActivityService {
 		userActivity.setBook(book);
 		userActivity.setCheckedOutDate(checkedOutDate);
 		userActivity.setDueDate(dueDate);
-		userActivity.setCheckedOutDate(checkedOutDate);
-		
+		// userActivity.setCheckedOutDate(checkedOutDate);
+
 		userActivity.setBookStatuses(bookStatusesService.findOne(1));
 		userActivity.setUser(userService.findOne(user.getUserId()));
-	 return userActivityRepository.saveAndFlush(userActivity);
-		   
-		
-		
-		
+		return userActivityRepository.saveAndFlush(userActivity);
 
+	} 
+	public UserActivity renewBook(int userActivityId){
+		
+		UserActivity userActivity=userActivityRepository.findOne(userActivityId);
+		UserActivity userActivity2 = new UserActivity();
+		String dueDate =dueDate();
+		userActivity2.setBook(userActivity.getBook());
+		userActivity2.setVersion(userActivity.getVersion()+1);
+		userActivity2.setDueDate(dueDate);
+		userActivity2.setBookStatuses(bookStatusesService.findOne(2));
+		userActivity2.setUser(userRepository.findOne("harithan"));
+		Short count =userActivity.getRenewalCount();
+		count++;
+		userActivity2.setRenewalCount(count);
+		System.out.println("Renewal count is:"+count);
+		return userActivityRepository.saveAndFlush(userActivity2);
+	}
 	}
 
-}
+
