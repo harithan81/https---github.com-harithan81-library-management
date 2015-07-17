@@ -4,7 +4,7 @@ Master branch build status: [![Master Branch Build Status](https://travis-ci.org
 Initial project set up &amp; generated code
 
 TODO
-1. Remove sysout. Add logging whereever required.
+- Remove sysout. Add logging whereever required.
 2. Database assertions for all test cases that modify data.
 3. Refactor replication code such that it can be reused.
 4. Make sure all use cases are working as expected such as checked out date in borrow use case.
