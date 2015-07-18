@@ -38,20 +38,18 @@ public class UserActivityService {
 
 	}
 
-	private String checkedOutDate() {
+	private Date checkedOutDate() {
 
 		Calendar calendar = Calendar.getInstance();
-		Date today = calendar.getTime();
-		String checkedOutDate = dateFormat.format(today);
+		Date checkedOutDate = calendar.getTime();
 		return checkedOutDate;
 
 	}
 
-	private String dueDate() {
+	private Date dueDate() {
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.WEEK_OF_YEAR, 2);
-		Date due = calendar.getTime();
-		String dueDate = dateFormat.format(due);
+		Date dueDate = calendar.getTime();
 		return dueDate;
 	}
 
@@ -59,13 +57,12 @@ public class UserActivityService {
 		User user = new User();
 		user.setUserId("harithan");
 		UserActivity userActivity = new UserActivity();
-		String checkedOutDate = checkedOutDate();
-		String dueDate = dueDate();
+		Date checkedOutDate = checkedOutDate();
+		Date dueDate = dueDate();
+		userActivity.setVersion(1);
 		userActivity.setBook(book);
 		userActivity.setCheckedOutDate(checkedOutDate);
 		userActivity.setDueDate(dueDate);
-		// userActivity.setCheckedOutDate(checkedOutDate);
-
 		userActivity.setBookStatuses(bookStatusesService.findOne(1));
 		userActivity.setUser(userService.findOne(user.getUserId()));
 		return userActivityRepository.saveAndFlush(userActivity);
@@ -75,7 +72,7 @@ public class UserActivityService {
 		
 		UserActivity userActivity=userActivityRepository.findOne(userActivityId);
 		UserActivity userActivity2 = new UserActivity();
-		String dueDate =dueDate();
+		Date dueDate =dueDate();
 		userActivity2.setBook(userActivity.getBook());
 		userActivity2.setVersion(userActivity.getVersion()+1);
 		userActivity2.setDueDate(dueDate);

@@ -16,9 +16,7 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.lm.domain.gen.Book;
 import com.lm.domain.gen.BookStatuses;
-import com.lm.domain.gen.User;
 import com.lm.domain.gen.UserActivity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,35 +32,10 @@ public class UserActivityServiceTest {
 	UserActivityService userActivityService;
 
 	@Test
-	@DatabaseSetup("UserActivity.xml")
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml","UserActivity.xml" })
 	public void findOne() {
 		UserActivity userActivity = userActivityService.findOne(1);
 		Assert.assertTrue(userActivity.getUserActivityId() == 1);
-		System.out.println("Id is:" + userActivity);
-
-	}
-
-	@Test
-	@DatabaseSetup("UserActivity.xml")
-	public void updateUserActivityTest() {
-		Book book = new Book();
-		book.setBookId(3);
-		book.setVersion(1);
-		book.setBookName("Chandamama");
-		book.setAuthorName("Kaarnati");
-		book.setIsbn("ISBN 0-06-250217-6");
-		book.setBookCount(3);
-
-		UserActivity userActivity = userActivityService
-				.updateUserActivity(book);
-		User user = userActivity.getUser();
-		Book userBook = userActivity.getBook();
-		Assert.assertTrue(userBook.getBookName().equals("Chandamama"));
-		System.out.println("book name:" + userBook.getBookName());
-
-		System.out.println("user name:" + user.getFirstName());
-		// Assert.assertTrue(userActivity.getUser().equals(user));
-		System.out.println("User details" + userActivity.getUserActivityId());
 
 	}
 

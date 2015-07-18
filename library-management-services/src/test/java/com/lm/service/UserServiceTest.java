@@ -15,6 +15,8 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.lm.domain.gen.User;
 import com.lm.repository.AddressRepository;
 
@@ -28,26 +30,21 @@ import com.lm.repository.AddressRepository;
 @Transactional
 public class UserServiceTest {
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	@Autowired
-	AddressRepository addressRepository;
+	private AddressRepository addressRepository;
 
 	@Test
-	@DatabaseSetup("User.xml")
+	@DatabaseSetup(value = { "User.xml" })
 	public void findOne() {
 		User user = userService.findOne("harithan");
 		Assert.assertTrue(user.getFirstName().equalsIgnoreCase("haritha"));
-		System.out.println("User Id is :" + "" + user.getUserId() + " "
-				+ "version:" + user.getVersion() + " " + "User firstName :"
-				+ user.getFirstName() + " " + "User lastName:"
-				+ user.getLastName() + "" + "Gender : " + user.getGender()
-				+ " " + "User birthdate:" + user.getBirthDate());
 	}
 
 	@Test
-	@DatabaseSetup("User.xml")
+	@DatabaseSetup({ "User.xml" })
+	@ExpectedDatabase(value = "CreateUserTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
 	public void createUser() {
-		//Address address = new Address();
 		User user = new User();
 		user.setUserId("subhashb");
 		user.setVersion(1);
@@ -55,17 +52,7 @@ public class UserServiceTest {
 		user.setLastName("Boreddy");
 		user.setGender('M');
 		user.setBirthDate("Dec1985");
-
 		user = userService.createUser(user);
-		Assert.assertTrue(user.getFirstName().equalsIgnoreCase("Subhash"));
-		System.out.println("User Id is :" + "" + user.getUserId() + " "
-				+ "version:" + user.getVersion() + " " + "User firstName :"
-				+ user.getFirstName() + " " + "User lastName:"
-				+ user.getLastName() + "" + "Gender : " + user.getGender()
-				+ " " + "User birthdate:" + user.getBirthDate());
-
-		//user.setAddresses(addressRepository.;
-
 	}
 
 }

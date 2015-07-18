@@ -1,0 +1,8 @@
+<dataset>
+
+	<BOOKTYPE bookTypeId="1" name="Adeventure" />
+	<BOOKSTATUSES bookStatusId="1" name="Borrowed" />
+	<BOOKSTATUSES bookStatusId="2" name="Renewed" />
+	<BOOKSTATUSES bookStatusId="3" name="Returned" />
+
+</dataset>

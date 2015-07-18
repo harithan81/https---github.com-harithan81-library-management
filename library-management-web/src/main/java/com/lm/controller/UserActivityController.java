@@ -25,7 +25,7 @@ public class UserActivityController {
 	@RequestMapping(method = RequestMethod.GET, value = "{userActivityId}")
 	@ResponseBody
 	public UserActivity findOne(@PathVariable int userActivityId) {
-		System.out.println("eneter");
+
 		UserActivity userActivity = userActivityService.findOne(userActivityId);
 
 		Book book = userActivity.getBook();
@@ -56,8 +56,6 @@ public class UserActivityController {
 		userActivity2.setVersion(userActivity.getVersion());
 		userActivity2.setBookStatuses(bookStatuses2);
 		userActivity2.setUser(user2);
-		userActivity2.setRenewalCount(userActivity.getRenewalCount());
-		System.out.println("count" + userActivity.getRenewalCount());
 
 		return userActivity2;
 

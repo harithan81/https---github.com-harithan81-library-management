@@ -5,9 +5,12 @@ package com.lm.domain.gen;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -45,8 +48,10 @@ public class Book implements java.io.Serializable {
 		this.bookId = bookId;
 	}
 
-	public Book(int bookId, String bookName, String authorName, String isbn, Integer bookCount, Date updatedOn, String updatedBy, Date createdOn,
-			String createdBy, Set<BookType> bookTypes, Set<UserActivity> userActivities) {
+	public Book(int bookId, String bookName, String authorName, String isbn,
+			Integer bookCount, Date updatedOn, String updatedBy,
+			Date createdOn, String createdBy, Set<BookType> bookTypes,
+			Set<UserActivity> userActivities) {
 		this.bookId = bookId;
 		this.bookName = bookName;
 		this.authorName = authorName;
@@ -61,6 +66,7 @@ public class Book implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "bookId", unique = true, nullable = false)
 	public int getBookId() {
 		return this.bookId;

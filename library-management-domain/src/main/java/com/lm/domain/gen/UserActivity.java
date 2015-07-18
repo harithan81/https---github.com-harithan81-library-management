@@ -4,9 +4,12 @@ package com.lm.domain.gen;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,10 +30,10 @@ public class UserActivity implements java.io.Serializable {
 	private User user;
 	private BookStatuses bookStatuses;
 	private Book book;
-	private String dueDate;
+	private Date dueDate;
 	private BigDecimal fine;
-	private String returnDate;
-	private String checkedOutDate;
+	private Date returnDate;
+	private Date checkedOutDate;
 	private Date holdPlacedOn;
 	private Short renewalCount;
 	private Date updatedOn;
@@ -48,8 +51,8 @@ public class UserActivity implements java.io.Serializable {
 		this.book = book;
 	}
 
-	public UserActivity(int userActivityId, User user, BookStatuses bookStatuses, Book book, String dueDate, BigDecimal fine, String returnDate,
-			String checkedOutDate, Date holdPlacedOn, Short renewalCount, Date updatedOn, String updatedBy, String createdBy, Date createdOn) {
+	public UserActivity(int userActivityId, User user, BookStatuses bookStatuses, Book book, Date dueDate, BigDecimal fine, Date returnDate,
+			Date checkedOutDate, Date holdPlacedOn, Short renewalCount, Date updatedOn, String updatedBy, String createdBy, Date createdOn) {
 		this.userActivityId = userActivityId;
 		this.user = user;
 		this.bookStatuses = bookStatuses;
@@ -67,6 +70,7 @@ public class UserActivity implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userActivityId", unique = true, nullable = false)
 	public int getUserActivityId() {
 		return this.userActivityId;
@@ -117,11 +121,11 @@ public class UserActivity implements java.io.Serializable {
 	}
 
 	@Column(name = "dueDate", length = 10)
-	public String getDueDate() {
+	public Date getDueDate() {
 		return this.dueDate;
 	}
 
-	public void setDueDate(String dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 
@@ -135,20 +139,20 @@ public class UserActivity implements java.io.Serializable {
 	}
 
 	@Column(name = "returnDate", length = 10)
-	public String getReturnDate() {
+	public Date getReturnDate() {
 		return this.returnDate;
 	}
 
-	public void setReturnDate(String returnDate) {
+	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}
 
 	@Column(name = "checkedOutDate", length = 10)
-	public String getCheckedOutDate() {
+	public Date getCheckedOutDate() {
 		return this.checkedOutDate;
 	}
 
-	public void setCheckedOutDate(String checkedOutDate) {
+	public void setCheckedOutDate(Date checkedOutDate) {
 		this.checkedOutDate = checkedOutDate;
 	}
 

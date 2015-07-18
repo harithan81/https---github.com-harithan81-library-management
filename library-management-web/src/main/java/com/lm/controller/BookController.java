@@ -2,7 +2,6 @@ package com.lm.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -21,9 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lm.domain.gen.Book;
-import com.lm.domain.gen.BookType;
 import com.lm.domain.gen.QBook;
-import com.lm.domain.gen.UserActivity;
 import com.lm.service.BookService;
 import com.mysema.query.BooleanBuilder;
 
@@ -43,14 +40,11 @@ public class BookController {
 		Book book = bookService.findOne(bookId);
 		log.info("Book Name:{}", book.getBookName());
 
-		
-		
 		Book b = new Book();
 		b.setAuthorName(book.getAuthorName());
 		b.setBookName(book.getBookName());
 		b.setIsbn(book.getIsbn());
 		b.setBookId(book.getBookId());
-	
 
 		return b;
 
@@ -58,13 +52,11 @@ public class BookController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
-	public Page<Book> findAll(
-			@RequestParam(value = "bookIdasd", required = false) Integer bookId,
+	public Page<Book> findAll(@RequestParam(value = "bookIdasd", required = false) Integer bookId,
 			@RequestParam(value = "bookName", required = false) String bookName,
 			@RequestParam(value = "authorName", required = false) String authorName,
 			@RequestParam(value = "isbn", required = false) String isbn) {
-		log.info(">>>bookId:{},bookName:{},authorName:{},isbn:{}.", bookId,
-				bookName, authorName, isbn);
+		log.info(">>>bookId:{},bookName:{},authorName:{},isbn:{}.", bookId, bookName, authorName, isbn);
 		QBook qBook = QBook.book;
 		BooleanBuilder builder = new BooleanBuilder();
 		if (bookId != null) {
@@ -80,14 +72,13 @@ public class BookController {
 			builder.and(qBook.isbn.eq(isbn));
 		}
 
-		Page<Book> pageOfBooks = bookService.findAll(builder, new PageRequest(
-				0, 50));
+		Page<Book> pageOfBooks = bookService.findAll(builder, new PageRequest(0, 50));
 		List<Book> listOfBooks = new ArrayList<Book>();
 
 		for (Book book : pageOfBooks.getContent()) {
 			Book b = new Book();
 			b.setBookId(book.getBookId());
-			b.setBookName(book.getAuthorName());
+			b.setBookName(book.getBookName());
 			b.setAuthorName(book.getAuthorName());
 			b.setIsbn(book.getIsbn());
 			listOfBooks.add(b);
@@ -101,9 +92,10 @@ public class BookController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public Book createBook(@RequestBody Book book) {
+		log.info(">>>" + book);
 		return bookService.createBook(book);
 	}
-	
+
 	@RequestMapping(value = "/{bookId}/borrow", method = RequestMethod.POST)
 	@ResponseBody
 	public Book borrowBook(@PathVariable int bookId) {

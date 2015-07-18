@@ -43,8 +43,6 @@ public class BookService {
 	public Book borrowBook(int bookId) {
 
 		Book book = bookRepository.findOne(bookId);
-		log.info("version:{}", book.getVersion());
-		log.info("Count is:{}", book.getBookCount());
 		book.setBookCount(book.getBookCount() - 1);
 		bookRepository.saveAndFlush(book);
 		userActivityService.updateUserActivity(book);
