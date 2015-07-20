@@ -75,7 +75,7 @@ public class UserActivityService {
 		userActivity.setDueDate(dueDate());
 		userActivity.setBookStatuses(bookStatusesService.findOne(2));
 		Short count = userActivity.getRenewalCount();
-		userActivity.setRenewalCount(count++);
+		userActivity.setRenewalCount(++count);
 		return userActivityRepository.saveAndFlush(userActivity);
 	}
 }
