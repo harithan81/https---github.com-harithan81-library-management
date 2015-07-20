@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-<USERACTIVITY userActivityID="1" version="1" bookId="2" bookStatusId="1" USERID="harithan"/>
+<USERACTIVITY USERACTIVITYID="1" VERSION="1" BOOKID="2" BOOKSTATUSID="1" USERID="harithan" RENEWALCOUNT="0"/>		
 </dataset>

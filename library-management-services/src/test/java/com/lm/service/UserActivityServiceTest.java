@@ -3,7 +3,6 @@ package com.lm.service;
 import javax.transaction.Transactional;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,23 +15,21 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.lm.domain.gen.BookStatuses;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.lm.domain.gen.UserActivity;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "classpath:test-spring-resources.xml",
-		"classpath:spring-services.xml" })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
-		DirtiesContextTestExecutionListener.class,
-		TransactionalTestExecutionListener.class,
-		DbUnitTestExecutionListener.class })
+@ContextConfiguration({ "classpath:test-spring-resources.xml", "classpath:spring-services.xml" })
+@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class,
+		TransactionalTestExecutionListener.class, DbUnitTestExecutionListener.class })
 @Transactional
 public class UserActivityServiceTest {
 	@Autowired
 	UserActivityService userActivityService;
 
 	@Test
-	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml","UserActivity.xml" })
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml", "UserActivity.xml" })
 	public void findOne() {
 		UserActivity userActivity = userActivityService.findOne(1);
 		Assert.assertTrue(userActivity.getUserActivityId() == 1);
@@ -40,18 +37,11 @@ public class UserActivityServiceTest {
 	}
 
 	@Test
-	@DatabaseSetup("UserActivity.xml")
-	@Ignore
-	// @ExpectedDatabase("UserActivityExpected.xml")
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml", "UserActivity.xml" })
+	@ExpectedDatabase(value = "RenewBookTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
 	public void renewBookTest() {
 
-		UserActivity userActivity = userActivityService.renewBook(1);
-		Assert.assertTrue(userActivity.getRenewalCount() == 3);
-		BookStatuses bookStatuses = userActivity.getBookStatuses();
-		Assert.assertTrue(bookStatuses.getName().equals("Renewed"));
-		System.out.println("book status is:" + bookStatuses.getName());
-		System.out
-				.println("Renewal count is:" + userActivity.getRenewalCount());
+		userActivityService.renewBook(1);
 	}
 
 }

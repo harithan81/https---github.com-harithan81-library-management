@@ -13,44 +13,33 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lm.domain.gen.User;
+import com.lm.replicator.UserReplicator;
 import com.lm.service.UserService;
 
 @Controller
 @RequestMapping("/user")
 @Transactional
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+	@Autowired
+	private UserReplicator userReplicator;
+
 	private Logger log = LoggerFactory.getLogger(BookController.class);
 
 	@RequestMapping(method = RequestMethod.GET, value = "{userId}")
 	@ResponseBody
 	public User findOne(@PathVariable String userId) {
+
 		User user = userService.findOne(userId);
-		log.info("user firstName:{}", user.getFirstName());
-
-		User user2 = new User();
-		user2.setUserId(user.getUserId());
-		user2.setVersion(user.getVersion());
-		user2.setFirstName(user.getFirstName());
-		user2.setLastName(user.getLastName());
-		user2.setGender(user.getGender());
-		user2.setBirthDate(user.getBirthDate());
-
-		return user2;
-
+		return userReplicator.replicate(user);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public User createUser(@RequestBody User user) {
-		log.info("enter into post method:");
-
-		User user2 = userService.createUser(user);
-		return user2;
-
+		return userService.createUser(user);
 	}
 
 }

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lm.domain.gen.Book;
 import com.lm.domain.gen.QBook;
+import com.lm.replicator.BookReplicator;
 import com.lm.service.BookService;
 import com.mysema.query.BooleanBuilder;
 
@@ -31,6 +32,8 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	@Autowired
+	private BookReplicator bookReplicator;
 
 	private Logger log = LoggerFactory.getLogger(BookController.class);
 
@@ -38,15 +41,7 @@ public class BookController {
 	@ResponseBody
 	public Book findOne(@PathVariable int bookId) {
 		Book book = bookService.findOne(bookId);
-		log.info("Book Name:{}", book.getBookName());
-
-		Book b = new Book();
-		b.setAuthorName(book.getAuthorName());
-		b.setBookName(book.getBookName());
-		b.setIsbn(book.getIsbn());
-		b.setBookId(book.getBookId());
-
-		return b;
+		return bookReplicator.replicate(book);
 
 	}
 
@@ -76,11 +71,7 @@ public class BookController {
 		List<Book> listOfBooks = new ArrayList<Book>();
 
 		for (Book book : pageOfBooks.getContent()) {
-			Book b = new Book();
-			b.setBookId(book.getBookId());
-			b.setBookName(book.getBookName());
-			b.setAuthorName(book.getAuthorName());
-			b.setIsbn(book.getIsbn());
+			Book b = bookReplicator.replicate(book);
 			listOfBooks.add(b);
 
 		}
@@ -92,14 +83,12 @@ public class BookController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public Book createBook(@RequestBody Book book) {
-		log.info(">>>" + book);
 		return bookService.createBook(book);
 	}
 
 	@RequestMapping(value = "/{bookId}/borrow", method = RequestMethod.POST)
 	@ResponseBody
 	public Book borrowBook(@PathVariable int bookId) {
-		log.info("BookId:{}", bookId);
 		Book book = bookService.borrowBook(bookId);
 		Book b = new Book();
 		b.setAuthorName(book.getAuthorName());

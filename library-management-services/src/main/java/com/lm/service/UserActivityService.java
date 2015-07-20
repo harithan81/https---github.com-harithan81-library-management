@@ -67,23 +67,15 @@ public class UserActivityService {
 		userActivity.setUser(userService.findOne(user.getUserId()));
 		return userActivityRepository.saveAndFlush(userActivity);
 
-	} 
-	public UserActivity renewBook(int userActivityId){
-		
-		UserActivity userActivity=userActivityRepository.findOne(userActivityId);
-		UserActivity userActivity2 = new UserActivity();
-		Date dueDate =dueDate();
-		userActivity2.setBook(userActivity.getBook());
-		userActivity2.setVersion(userActivity.getVersion()+1);
-		userActivity2.setDueDate(dueDate);
-		userActivity2.setBookStatuses(bookStatusesService.findOne(2));
-		userActivity2.setUser(userRepository.findOne("harithan"));
-		Short count =userActivity.getRenewalCount();
-		count++;
-		userActivity2.setRenewalCount(count);
-		System.out.println("Renewal count is:"+count);
-		return userActivityRepository.saveAndFlush(userActivity2);
-	}
 	}
 
+	public UserActivity renewBook(int userActivityId) {
 
+		UserActivity userActivity = userActivityRepository.findOne(userActivityId);
+		userActivity.setDueDate(dueDate());
+		userActivity.setBookStatuses(bookStatusesService.findOne(2));
+		Short count = userActivity.getRenewalCount();
+		userActivity.setRenewalCount(count++);
+		return userActivityRepository.saveAndFlush(userActivity);
+	}
+}
