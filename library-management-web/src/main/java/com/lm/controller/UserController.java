@@ -2,8 +2,6 @@ package com.lm.controller;
 
 import javax.transaction.Transactional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +24,6 @@ public class UserController {
 	@Autowired
 	private UserReplicator userReplicator;
 
-	private Logger log = LoggerFactory.getLogger(BookController.class);
-
 	@RequestMapping(method = RequestMethod.GET, value = "{userId}")
 	@ResponseBody
 	public User findOne(@PathVariable String userId) {
@@ -39,7 +35,8 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public User createUser(@RequestBody User user) {
-		return userService.createUser(user);
+		User user2 = userService.createUser(user);
+		return userReplicator.replicate(user2);
 	}
 
 }

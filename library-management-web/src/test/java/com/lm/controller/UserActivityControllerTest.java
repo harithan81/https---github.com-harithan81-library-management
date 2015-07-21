@@ -5,12 +5,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.github.springtestdbunit.annotation.DatabaseSetup;
+import com.github.springtestdbunit.annotation.ExpectedDatabase;
+import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 public class UserActivityControllerTest extends BaseWebTest {
 
@@ -22,10 +23,10 @@ public class UserActivityControllerTest extends BaseWebTest {
 	}
 
 	@Test
-	@Ignore
-	@DatabaseSetup("UserActivity.xml")
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml", "UserActivity.xml" })
+	@ExpectedDatabase(value = "RenewBookTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
 	public void renewBook() throws Exception {
-		ResultActions resultActions = mockmvc.perform(post("/userActivity/1"));
+		ResultActions resultActions = mockmvc.perform(post("/userActivity/1/renew"));
 		resultActions.andExpect(status().is2xxSuccessful());
 		log.info("Book Renewed:{}", resultActions.andReturn().getResponse().getContentAsString());
 	}

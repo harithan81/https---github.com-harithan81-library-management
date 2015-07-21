@@ -70,7 +70,6 @@ public class UserActivityService {
 	}
 
 	public UserActivity renewBook(int userActivityId) {
-
 		UserActivity userActivity = userActivityRepository.findOne(userActivityId);
 		userActivity.setDueDate(dueDate());
 		userActivity.setBookStatuses(bookStatusesService.findOne(2));
