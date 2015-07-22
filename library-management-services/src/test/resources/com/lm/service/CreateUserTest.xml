@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-<USER USER_ID="harithan" version="1" firstName="Haritha" lastName="Kaarnati" gender="F" birthDate="Aug1989"/>
-<USER USER_ID="subhashb" version="1" firstName="Subhash" lastName="Boreddy" gender="M" birthDate="Dec1985"/>
+<USER USER_ID="harithan" version="1" FIRSTNAME="Haritha" LASTNAME="Kaarnati" GENDER="F" EMAILID="haritha.n81@gmail.com" BIRTHDATE="Aug1989"/>
+<USER USER_ID="subhashb" version="1" FIRSTNAME="Subhash" LASTNAME="Boreddy" GENDER="M" EMAILID="subhashreddy98@gmail.com" BIRTHDATE="Dec1985"/>
 </dataset>

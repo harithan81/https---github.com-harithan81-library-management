@@ -28,7 +28,7 @@ public class User implements java.io.Serializable {
 	private String firstName;
 	private String lastName;
 	private Character gender;
-	//private String emailId;
+	private String emailId;
 	private String birthDate;
 	private Date updatedOn;
 	private String updatedBy;
@@ -44,14 +44,14 @@ public class User implements java.io.Serializable {
 		this.userId = userId;
 	}
 
-	public User(String userId, String firstName, String lastName, Character gender, String birthDate,
+	public User(String userId, String firstName, String lastName, Character gender, String emailId, String birthDate,
 			Date updatedOn, String updatedBy, Date createdOn, String createdBy, Set<UserActivity> userActivities,
 			Set<Address> addresses) {
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
-		//this.emailId = emailId;
+		this.emailId = emailId;
 		this.birthDate = birthDate;
 		this.updatedOn = updatedOn;
 		this.updatedBy = updatedBy;
@@ -107,14 +107,15 @@ public class User implements java.io.Serializable {
 	public void setGender(Character gender) {
 		this.gender = gender;
 	}
-	/*@Column(name = "emailId", length = 30)
-	public String getEmailID() {
+
+	@Column(name = "emailId", length = 300)
+	public String getEmailId() {
 		return this.emailId;
 	}
+
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
-	}*/
-	
+	}
 
 	@Column(name = "birthDate", length = 10)
 	public String getBirthDate() {

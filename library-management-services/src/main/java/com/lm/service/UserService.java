@@ -15,7 +15,9 @@ public class UserService {
 		return userRepository.findOne(userId);
 
 	}
-	public User createUser(User user){
+
+	public User createUser(User user) {
 		return userRepository.saveAndFlush(user);
 	}
+
 }

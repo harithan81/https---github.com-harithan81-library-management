@@ -42,8 +42,7 @@ public class BookServiceTest extends BaseTest {
 		Page<Book> books = bookService.findAll(builder, new PageRequest(0, 50));
 
 		for (Book book : books.getContent()) {
-			System.out.println("book name is:" + book.getBookName()
-					+ "book Id is" + book.getBookId() + "author name is:"
+			System.out.println("book name is:" + book.getBookName() + "book Id is" + book.getBookId() + "author name is:"
 					+ book.getAuthorName() + "book ISBN is :" + book.getIsbn());
 			Assert.assertTrue(book.getBookName().equals("The Alchemist"));
 			Assert.assertTrue(book.getAuthorName().equals("Paulo Coelho"));

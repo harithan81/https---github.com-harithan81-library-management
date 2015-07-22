@@ -77,4 +77,5 @@ public class UserActivityService {
 		userActivity.setRenewalCount(++count);
 		return userActivityRepository.saveAndFlush(userActivity);
 	}
+
 }
