@@ -3,7 +3,7 @@ Master branch build status: [![Master Branch Build Status](https://travis-ci.org
 # library-management
 Initial project set up &amp; generated code
 ![](https://raw.github.com/harithan81/librarymanagement/library.jpg)
-[Create Book](https://github.com/harithan81/librarymanagement/raw/master/Docs/CreateBook.docx)
+[Create Book](https://github.com/harithan81/librarymanagement/raw/master/Docs/CreateBook.md)
 
 TODO
 
