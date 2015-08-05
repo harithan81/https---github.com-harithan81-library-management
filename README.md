@@ -2,9 +2,13 @@ Master branch build status: [![Master Branch Build Status](https://travis-ci.org
 [![Coverage Status](https://coveralls.io/repos/harithan81/library-management/badge.svg)](https://coveralls.io/r/harithan81/library-management)
 # library-management
 Initial project set up &amp; generated code
-- ![image](https://raw.github.com/harithan81/library-management/blob/master/library.jpg)
+Library Management project is developed to provide features such as
 - [Create Book](https://github.com/harithan81/library-management/blob/master/Docs/CreateBook.docx)
-
+- [Catalogue Search](https://github.com/harithan81/library-management/blob/master/Docs/CatalogueSearch.docx)
+- [Register User](https://github.com/harithan81/library-management/blob/master/Docs/RegisterUser.docx)
+- [Borrow Book](https://github.com/harithan81/library-management/blob/master/Docs/Borrow.docx)
+- [Renew Book](https://github.com/harithan81/library-management/blob/master/Docs/Renew.docx)
+- [Return Book](https://github.com/harithan81/library-management/blob/master/Docs/ReturnBook.docx)
 TODO
 
 - Refactor replication code such that it can be reused.
