@@ -10,7 +10,7 @@ Library Management project is developed to provide features such as
 - [Borrow Book](https://github.com/harithan81/library-management/blob/master/Docs/Borrow.docx)
 - [Renew Book](https://github.com/harithan81/library-management/blob/master/Docs/Renew.docx)
 - [Return Book](https://github.com/harithan81/library-management/blob/master/Docs/ReturnBook.docx)
-- 
+
 TODO
 
 - Refactor replication code such that it can be reused.
