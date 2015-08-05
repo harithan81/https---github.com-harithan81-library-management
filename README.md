@@ -2,7 +2,7 @@ Master branch build status: [![Master Branch Build Status](https://travis-ci.org
 [![Coverage Status](https://coveralls.io/repos/harithan81/library-management/badge.svg)](https://coveralls.io/r/harithan81/library-management)
 # library-management
 Initial project set up &amp; generated code
-
+![alt tag](https://raw.github.com/harithan81/librarymanagement/library.jpg)
 TODO
 
 - Refactor replication code such that it can be reused.
