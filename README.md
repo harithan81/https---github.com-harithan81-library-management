@@ -13,6 +13,7 @@ Library Management project is developed to provide features such as
 # How to use this application (Rest API)
 - Create Book
   |URI|Http|Body|Function|
+  |--|--|--|--|
   |/book |POST  |||
 
 # Technology Stack: 
