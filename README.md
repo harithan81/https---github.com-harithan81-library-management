@@ -11,15 +11,13 @@ Library Management project is developed to provide features such as
 - [Return Book](https://github.com/harithan81/library-management/blob/master/Docs/ReturnBook.docx)
 
 # Responsibilities: 
-- Developed this application primarily using Java.
-- Developed Rest Services using Spring Controller and Spring Service Components.
-- Rest Services are implemented to perform CRUD(Create,Update and Delete) operations on entity such as Book,User etc.
+- Application is developed using Java.
+- Rest Services developed using Spring web provide ability to perform CRUD(Create,Update and Delete) operations on       entity such as Book,User etc.
 - Used frameworks such as Spring,Hibernate and Spring Data.
-- Developed JPA Repositories by using Spring Data with support to Pagination and Sorting.
-- Used Spring Data to reduce the amount of code that we are writing to perform CRUD operations on Database.
-- Designed the database data model for LibraryManagement System using Oracle Data Modeler.
-- Developed test cases using JUnit,DBUnit,Mock MVC for performing unit and integartion testing.
-- Configured Travis to automize the builds.For each and every commit to the repository it triggers the new build.
+- Used JPA specification with hibernate as provider.
+- Database data model is designed using Oracle Data Modeler.
+- Test cases are developed using JUnit,DBUnit,Mock MVC for performing unit and integartion testing.
+- Travis is used for Continous Integration
 
 
 TODO
