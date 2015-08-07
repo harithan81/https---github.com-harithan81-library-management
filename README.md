@@ -16,7 +16,7 @@ Library Management project is developed to provide features such as
 | URI | HTTP Request Type | Body | What it does? |
 |------:|:-----|---------|:------:|
 |   /book  |  POST  |    asd   |    Creates new book and returns created book   |
-|  123  |  123 |   123   |   123  |
+|  /book/bookId  |  123 |   123   |   123  |
 |    1  |    1 |     1   |     1  |
 
 
