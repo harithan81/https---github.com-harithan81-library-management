@@ -12,11 +12,14 @@ Library Management project is developed to provide features such as
 
 # How to use this application (Rest API)
 - Create Book
+
 |URI|Http|Body|Function|
 |--|--|--|--|
 |/book |POST|asd|aasd|
 
 # Technology Stack: 
+
+
 - Application is developed using Java.
 - Rest Services developed using Spring web provide ability to perform CRUD(Create,Update and Delete) operations on       entity such as Book,User etc.
 - Used frameworks such as Spring,Hibernate and Spring Data.
