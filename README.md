@@ -51,17 +51,6 @@ Library Management project is developed to provide features such as
 |   /userActivity/userActivityId/return |  POST  |    asd   |    Returned book with userActivityId |
 
 
-
-
-
-
-
-
-
-|URI|Http|Body|Function|
-|--|--|--|--|
-|/book |POST|asd|aasd|
-
 # Technology Stack: 
 
 
