@@ -13,7 +13,7 @@ Library Management project is developed to provide features such as
 # How to use this application (Rest API)
 - Create Book
 
-| URI | HTTP Request Type | Body | Function |
+| URI | HTTP Request Type | Body | What it does? |
 |------:|:-----|---------|:------:|
 |   /book  |  POST  |    asd   |    asd  |
 |  123  |  123 |   123   |   123  |
