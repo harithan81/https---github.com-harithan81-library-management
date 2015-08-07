@@ -19,12 +19,39 @@ Library Management project is developed to provide features such as
 |  /book/bookId  |  GET |    |   search the book with given bookId and returns the book |
 |    1  |    1 |     1   |     1  |
 
--Catologue Search
+- Catologue Search
 
 | URI | HTTP Request Type | Body | What it does? |
 |------:|:-----|---------|:------:|
 |  /book/bookId  |  GET |    |   search the book with given bookId and returns the book |
 |    1  |    1 |     1   |     1  |
+
+- Register User
+
+| URI | HTTP Request Type | Body | What it does? |
+|------:|:-----|---------|:------:|
+|   /user  |  POST  |    asd   |    Creates new user and returns created user   |
+|  /book/userId  |  GET |    |   search the user with given userId and returns the user |
+
+- Borrow Book
+
+| URI | HTTP Request Type | Body | What it does? |
+|------:|:-----|---------|:------:|
+|   /book/bookId/borrow  |  POST  |    asd   |    Creates new book and returns created book   |
+
+
+
+- Renew Book
+
+| URI | HTTP Request Type | Body | What it does? |
+|------:|:-----|---------|:------:|
+|   /userSctivity/userActivityId/renew  |  POST  |    asd   |    Renew the book with corresponding given user activity and update the Cheked out date return date  and returns the renewed book   |
+|  /book/bookId  |  GET |    |   search the book with given bookId and returns the book |
+
+
+
+
+
 
 
 |URI|Http|Body|Function|
