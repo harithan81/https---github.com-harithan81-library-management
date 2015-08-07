@@ -12,9 +12,9 @@ Library Management project is developed to provide features such as
 
 # How to use this application (Rest API)
 - Create Book
-  |URI|Http|Body|Function|
-  |--|--|--|--|
-  |/book |POST  |||
+|URI|Http|Body|Function|
+|--|--|--|--|
+|/book |POST|asd|aasd|
 
 # Technology Stack: 
 - Application is developed using Java.
