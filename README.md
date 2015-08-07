@@ -10,6 +10,11 @@ Library Management project is developed to provide features such as
 - [Renew Book](https://github.com/harithan81/library-management/blob/master/Docs/Renew.docx)
 - [Return Book](https://github.com/harithan81/library-management/blob/master/Docs/ReturnBook.docx)
 
+# How to use this application (Rest API)
+- Create Book
+  |URI| Http Request Type| Body| Function|
+  /book |POST  |||
+
 # Technology Stack: 
 - Application is developed using Java.
 - Rest Services developed using Spring web provide ability to perform CRUD(Create,Update and Delete) operations on       entity such as Book,User etc.
