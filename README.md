@@ -13,6 +13,19 @@ Library Management project is developed to provide features such as
 # How to use this application (Rest API)
 - Create Book
 
++---------------+---------------+--------------------+
+| Fruit         | Price         | Advantages         |
++===============+===============+====================+
+| Bananas       | $1.34         | - built-in wrapper |
+|               |               | - bright color     |
++---------------+---------------+--------------------+
+| Oranges       | $2.10         | - cures scurvy     |
+|               |               | - tasty            |
++---------------+---------------+--------------------+ 
+
+
+
+
 |URI|Http|Body|Function|
 |--|--|--|--|
 |/book |POST|asd|aasd|
