@@ -11,7 +11,6 @@ Library Management project is developed to provide features such as
 - [Return Book](https://github.com/harithan81/library-management/blob/master/Docs/ReturnBook.docx)
 
 # How to use this application (Rest API)
-- Create Book
 
 | URI | HTTP Request Type | Body | What it does? |
 |------:|:-----|---------|:------:|
@@ -36,10 +35,3 @@ Library Management project is developed to provide features such as
 - Test cases are developed using JUnit,DBUnit,Mock MVC for performing unit and integartion testing.
 - Travis is used for Continous Integration
 
-
-TODO
-
-- Refactor replication code such that it can be reused.
-- Make sure all use cases are working as expected such as checked out date in borrow use case.
-- Replicate required properties of objects returned.
-- Create informative mark down file
