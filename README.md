@@ -15,12 +15,7 @@ Library Management project is developed to provide features such as
 
 | URI | HTTP Request Type | Body | What it does? |
 |------:|:-----|---------|:------:|
-|   /book  |  POST  |    asd   |    Creates new book and returns created book   |
-
-- Catologue Search
-
-| URI | HTTP Request Type | Body | What it does? |
-|------:|:-----|---------|:------:|
+|   /book  |  POST  |       |    Creates new book and returns created book   |
 |  /book/bookId  |  GET |    |   search the book with given bookId and returns the book |
 
 
