@@ -16,34 +16,13 @@ Library Management project is developed to provide features such as
 | URI | HTTP Request Type | Body | What it does? |
 |------:|:-----|---------|:------:|
 |   /book  |  POST  |       |    Creates new book and returns created book   |
-|  /book/bookId  |  GET |    |   search the book with given bookId and returns the book |
-
-
-- Register User
-
-| URI | HTTP Request Type | Body | What it does? |
-|------:|:-----|---------|:------:|
-|   /user  |  POST  |    asd   |    Creates new user and returns created user   |
-|  /book/userId  |  GET |    |   search the user with given userId and returns the user |
-
-- Borrow Book
-
-| URI | HTTP Request Type | Body | What it does? |
-|------:|:-----|---------|:------:|
-|   /book/bookId/borrow  |  POST  |    asd   |    Creates new book and returns created book   |
-
-- Renew Book
-
-| URI | HTTP Request Type | Body | What it does? |
-|------:|:-----|---------|:------:|
-|   /userSctivity/userActivityId/renew  |  POST  |    asd   |    Renew the book with corresponding given userActivityId and updates due date for renewed book   |
-
-
--Return Book
-
-| URI | HTTP Request Type | Body | What it does? |
-|------:|:-----|---------|:------:|
-|   /userActivity/userActivityId/return |  POST  |    asd   |    Returned book with userActivityId |
+|  /book/{bookId}  |  GET |    |   Search the book with given bookId and returns the book |
+|  /book?bookName={bookName}&authorName={authorName}  |  GET |    |   Search the book with given bookId and returns the book |
+|   /user  |  POST  |       |    Creates new user and returns created user   |
+|  /user/userId  |  GET |    |   Search the user with given userId and returns the user |
+|   /book/bookId/borrow  |  POST  |     |    Borrow book and return borrowed  book   |
+|   /userActivity/userActivityId/renew  |  POST  |      |    Renew the book return renewed book   |
+|   /userActivity/userActivityId/return |  POST  |      |    Returns the book to catalogue  |
 
 
 # Technology Stack: 
