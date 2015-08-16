@@ -15,7 +15,11 @@ Library Management project is developed to provide features such as
 |------:|:-----|---------|:------:|
 |   /book  |  POST  |       |    Creates new book and returns created book   |
 |  /book/{bookId}  |  GET |    |   Search the book with given bookId and returns the book |
-|  /book  |  GET |    |   Search the book with given query parameters and returns the book. Searchable query parameters are bookId, bookName, authorName,isbn |
+|  /book  |  GET |    |   Search the book with given query parameters and returns the book. Searchable query parameters are 
+-  bookId
+-  bookName
+-  authorName
+-  isbn |
 |   /user  |  POST  |       |    Creates new user and returns created user   |
 |  /user/{userId}  |  GET |    |   Search the user with given userId and returns the user |
 |   /book/{bookId}/borrow  |  POST  |     |    Borrow book and return borrowed  book   |
