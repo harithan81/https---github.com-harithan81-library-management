@@ -30,5 +30,12 @@ public class UserActivityControllerTest extends BaseWebTest {
 		resultActions.andExpect(status().is2xxSuccessful());
 		log.info("Book Renewed:{}", resultActions.andReturn().getResponse().getContentAsString());
 	}
-
+	@Test
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml", "UserActivity.xml" })
+	@ExpectedDatabase(value = "ReturnBookTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+	public void returnBook() throws Exception {
+		ResultActions resultActions = mockmvc.perform(post("/userActivity/1/return"));
+		resultActions.andExpect(status().is2xxSuccessful());
+		log.info("Book Returnd:{}", resultActions.andReturn().getResponse().getContentAsString());
+	}
 }

@@ -42,7 +42,8 @@ public class BookServiceTest extends BaseTest {
 		Page<Book> books = bookService.findAll(builder, new PageRequest(0, 50));
 
 		for (Book book : books.getContent()) {
-			System.out.println("book name is:" + book.getBookName() + "book Id is" + book.getBookId() + "author name is:"
+			System.out.println("book name is:" + 
+		book.getBookName() + "book Id is" + book.getBookId() + "author name is:"
 					+ book.getAuthorName() + "book ISBN is :" + book.getIsbn());
 			Assert.assertTrue(book.getBookName().equals("The Alchemist"));
 			Assert.assertTrue(book.getAuthorName().equals("Paulo Coelho"));
@@ -66,5 +67,13 @@ public class BookServiceTest extends BaseTest {
 	@ExpectedDatabase(value = "ExpectedBorrowBook.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
 	public void borrowBookTest() {
 		bookService.borrowBook(2);
+	}
+
+	@Test
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml", "UserActivity.xml" })
+	@ExpectedDatabase(value = "PlaceHoldOnBookTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+	public void placeHoldOnBookTest() {
+		bookService.placeHoldOnBook(2);
+
 	}
 }

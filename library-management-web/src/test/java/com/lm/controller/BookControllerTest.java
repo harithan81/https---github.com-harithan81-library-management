@@ -49,7 +49,7 @@ public class BookControllerTest extends BaseWebTest {
 	}
 
 	@Test
-	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml" })
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml" }) 
 	@ExpectedDatabase(value = "BorrowBookTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
 	public void borrowBook() throws Exception {
 		ResultActions resultActions = mockmvc.perform(post("/book/2/borrow"));
@@ -57,4 +57,14 @@ public class BookControllerTest extends BaseWebTest {
 		Assert.assertTrue(resultActions.andReturn().getResponse().getContentAsString().contains("Chandamama"));
 	}
 
+	@Test
+	@DatabaseSetup(value = { "StaticTypes.xml", "Book.xml", "User.xml", "UserActivity.xml" })
+	@ExpectedDatabase(value = "PlaceHoldOnBookTest.xml", assertionMode = DatabaseAssertionMode.NON_STRICT)
+	public void placeHoldOnBookTest() throws Exception {
+		ResultActions resultActions = mockmvc.perform(post("/book/2/placeHold"));
+		resultActions.andExpect(status().is2xxSuccessful());
+		Assert.assertTrue(resultActions.andReturn().getResponse().getContentAsString().contains("Chandamama"));
+		log.info("Book Hold:{}", resultActions.andReturn().getResponse().getContentAsString());
+
+	}
 }

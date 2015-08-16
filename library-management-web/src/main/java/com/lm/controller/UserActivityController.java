@@ -35,4 +35,11 @@ public class UserActivityController {
 		UserActivity userActivity= userActivityService.renewBook(userActivityId);
 		return userActivityReplicator.replicate(userActivity);
 	}
+	@RequestMapping(method=RequestMethod.POST,value="{userActivityId}/return")
+	@ResponseBody
+	public UserActivity returnBook(@PathVariable int userActivityId){
+		UserActivity userActivity= userActivityService.returnBook(userActivityId);
+		return userActivityReplicator.replicate(userActivity);
+		
+	}
 }

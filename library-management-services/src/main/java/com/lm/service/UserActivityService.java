@@ -1,7 +1,5 @@
 package com.lm.service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -11,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lm.domain.gen.Book;
+import com.lm.domain.gen.BookStatuses;
 import com.lm.domain.gen.User;
 import com.lm.domain.gen.UserActivity;
 import com.lm.repository.BookStatusesRepository;
@@ -20,7 +19,6 @@ import com.lm.repository.UserRepository;
 @Service
 @Transactional
 public class UserActivityService {
-	DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
 	@Autowired
 	private UserActivityRepository userActivityRepository;
@@ -69,6 +67,22 @@ public class UserActivityService {
 
 	}
 
+	public UserActivity updateActivity(Book book) {
+		System.out.println("Enter");
+		UserActivity userActivity = new UserActivity();
+		Date holdPlacedOn = checkedOutDate();
+		// System.out.println("UserActivity Id:"+userActivity.getUserActivityId());
+		userActivity.setUserActivityId(2);
+		userActivity.setUser(userService.findOne("lucky"));
+		userActivity.setBook(book);
+		userActivity.setBookStatuses(bookStatusesService.findOne(4));
+		userActivity.setHoldPlacedOn(holdPlacedOn);
+		userActivity.setVersion(1);
+
+		return userActivityRepository.saveAndFlush(userActivity);
+
+	}
+
 	public UserActivity renewBook(int userActivityId) {
 		UserActivity userActivity = userActivityRepository.findOne(userActivityId);
 		userActivity.setDueDate(dueDate());
@@ -78,4 +92,16 @@ public class UserActivityService {
 		return userActivityRepository.saveAndFlush(userActivity);
 	}
 
+	public UserActivity returnBook(int userActivityId) {
+		UserActivity userActivity = userActivityRepository.findOne(userActivityId);
+		BookStatuses bookStatuses = userActivity.getBookStatuses();
+		Date returnDate = checkedOutDate();
+
+		if (bookStatuses.getBookStatusId() == 1) {
+			userActivity.setReturnDate(returnDate);
+			userActivity.setBookStatuses(bookStatusesService.findOne(3));
+
+		}
+		return userActivityRepository.saveAndFlush(userActivity);
+	}
 }

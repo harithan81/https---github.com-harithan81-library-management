@@ -4,5 +4,5 @@
 	<BOOKSTATUSES bookStatusId="1" name="Borrowed" />
 	<BOOKSTATUSES bookStatusId="2" name="Renewed" />
 	<BOOKSTATUSES bookStatusId="3" name="Returned" />
-
+	<BOOKSTATUSES bookStatusId="4" name="Hold" />
 </dataset>

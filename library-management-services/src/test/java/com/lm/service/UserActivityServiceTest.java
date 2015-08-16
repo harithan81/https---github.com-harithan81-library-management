@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
+import com.lm.domain.gen.BookStatuses;
 import com.lm.domain.gen.UserActivity;
 
 
@@ -28,6 +29,15 @@ public class UserActivityServiceTest extends BaseTest{
 	public void renewBookTest() {
 
 		userActivityService.renewBook(1);
+	}
+	@Test
+	@DatabaseSetup(value={"StaticTypes.xml","Book.xml","User.xml","UserActivity.xml"})
+	@ExpectedDatabase(value="ReturnBookTest.xml",assertionMode=DatabaseAssertionMode.NON_STRICT)
+	public void returnBookTest(){
+		UserActivity userActivity=userActivityService.returnBook(1);
+		BookStatuses bookStatuses=userActivity.getBookStatuses();
+		System.out.println("Book Status is:"+bookStatuses.getName());
+		System.out.println("verion is:"+userActivity.getVersion());
 	}
 
 }

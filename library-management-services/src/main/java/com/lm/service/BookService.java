@@ -1,5 +1,7 @@
 package com.lm.service;
 
+import java.util.Set;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -12,6 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.lm.domain.gen.Book;
+import com.lm.domain.gen.BookStatuses;
+import com.lm.domain.gen.UserActivity;
 import com.lm.repository.BookRepository;
 import com.mysema.query.types.Predicate;
 
@@ -48,6 +52,25 @@ public class BookService {
 		userActivityService.updateUserActivity(book);
 		return book;
 
+	}
+	/* (non-Javadoc)
+	 * @see com.lm.service.IBookService#placeHoldOnBook(int)
+	 */
+	public Book placeHoldOnBook(int bookId){
+		Book book=bookRepository.findOne(bookId);
+		BookStatuses bookStatuses = null;
+		Set<UserActivity> userActivities=book.getUserActivities();
+		for(UserActivity userActivity:userActivities){
+			bookStatuses=userActivity.getBookStatuses();
+						
+			}
+		System.out.println("status Id:"+bookStatuses.getBookStatusId());
+		if(bookStatuses.getBookStatusId()==1){
+			userActivityService.updateActivity(book);
+			
+		}
+		return book;
+		
 	}
 
 }

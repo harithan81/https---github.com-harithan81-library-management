@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	<Book>
+		<bookName>Wings Of Fire</bookName>
+		<authorName>Abdul Kalam</authorName>
+		<isbn>ISBN 0-06-250217-8</isbn>
+		<bookCount>2</bookCount>
+	</Book>
+	<Book>
+		<bookName>Raja Yoga</bookName>
+		<authorName>Swami Vivekananda</authorName>
+		<isbn>ISBN 0-06-250217-10</isbn>
+		<bookCount>2</bookCount>
+	</Book>
+
+</Library>
+

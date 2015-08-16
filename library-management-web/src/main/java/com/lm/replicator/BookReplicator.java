@@ -1,12 +1,13 @@
 package com.lm.replicator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.lm.domain.gen.Book;
 
 @Component
 public class BookReplicator {
-
+	
 	public Book replicate(Book book) {
 		Book book1 = new Book();
 		book1.setBookName(book.getBookName());

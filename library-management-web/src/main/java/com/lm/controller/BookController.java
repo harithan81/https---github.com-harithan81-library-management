@@ -40,6 +40,7 @@ public class BookController {
 	@RequestMapping(method = RequestMethod.GET, value = "{bookId}")
 	@ResponseBody
 	public Book findOne(@PathVariable int bookId) {
+		System.out.println(">>>bookService:" + bookService);
 		Book book = bookService.findOne(bookId);
 		return bookReplicator.replicate(book);
 
@@ -90,20 +91,20 @@ public class BookController {
 	@ResponseBody
 	public Book borrowBook(@PathVariable int bookId) {
 		Book book = bookService.borrowBook(bookId);
-		Book b = new Book();
-		b.setAuthorName(book.getAuthorName());
-		b.setBookName(book.getBookName());
-		b.setIsbn(book.getIsbn());
-		b.setBookId(book.getBookId());
-		b.setBookCount(book.getBookCount());
-		return b;
+		/*
+		 * Book b = new Book(); b.setAuthorName(book.getAuthorName());
+		 * b.setBookName(book.getBookName()); b.setIsbn(book.getIsbn());
+		 * b.setBookId(book.getBookId()); b.setBookCount(book.getBookCount());
+		 */
+		return bookReplicator.replicate(book);
 
 	}
 
-	@RequestMapping(value = "returnBook/{bookId}", method = RequestMethod.POST)
+	@RequestMapping(value = "{bookId}/placeHold", method = RequestMethod.POST)
 	@ResponseBody
-	public Book returnBook(@PathVariable int bookId) {
-		return bookService.borrowBook(bookId);
+	public Book placeHoldOnBook(@PathVariable int bookId) {
+		Book book = bookService.placeHoldOnBook(bookId);
+		return bookReplicator.replicate(book);
 	}
 
 }
