@@ -9,7 +9,6 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:/test-spring-resources.xml
 			classpath:/spring-services.xml			
 		</param-value>
 	</context-param>
