@@ -8,23 +8,6 @@
 		<relativePath>../library-management-parent</relativePath>
 	</parent>
 	<artifactId>library-management-domain</artifactId>
-	<dependencies>
-		<dependency>
-			<groupId>net.sourceforge.jtds</groupId>
-			<artifactId>jtds</artifactId>
-			<version>1.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-tools</artifactId>
-			<version>4.3.1.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>4.3.1.Final</version>
-		</dependency>
-	</dependencies>
 
 	<!-- Configure Maven APT plugin -->
 
@@ -46,40 +29,67 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<configuration>
-							<target>
-								<property name="maven_compile_path" refid="maven.compile.classpath" />
-								<property name="maven_test_path" refid="maven.test.classpath" />
-								<path id="toolslib">
-									<pathelement path="${maven_compile_path}" />
-									<pathelement path="${maven_test_path}" />
-								</path>
-								<taskdef name="hibernatetool" classname="org.hibernate.tool.ant.HibernateToolTask"
-									classpathref="toolslib" />
-								<hibernatetool destdir="${basedir}/src/main/java">
-									<jdbcconfiguration
-										configurationfile="${basedir}/src/main/resources/hibernate.cfg.xml"
-										revengfile="${basedir}/src/main/resources/hibernate.reveng.xml"
-										packageName="com.lm.domain.gen2" />
-									<hbm2java jdk5="true" ejb3="true">
-										<property key="fieldAnnotations" value="true" />
-									</hbm2java>
-								</hibernatetool>
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>generate-domain-classes</id>
+			<dependencies>
+				<dependency>
+					<groupId>net.sourceforge.jtds</groupId>
+					<artifactId>jtds</artifactId>
+					<version>1.3.1</version>
+				</dependency>
+				<dependency>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-tools</artifactId>
+					<version>4.3.1.Final</version>
+				</dependency>
+				<dependency>
+					<groupId>org.hibernate</groupId>
+					<artifactId>hibernate-core</artifactId>
+					<version>4.3.1.Final</version>
+				</dependency>
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.7</version>
+						<executions>
+							<execution>
+								<phase>generate-sources</phase>
+								<configuration>
+									<target>
+										<property name="maven_compile_path" refid="maven.compile.classpath" />
+										<property name="maven_test_path" refid="maven.test.classpath" />
+										<path id="toolslib">
+											<pathelement path="${maven_compile_path}" />
+											<pathelement path="${maven_test_path}" />
+										</path>
+										<taskdef name="hibernatetool"
+											classname="org.hibernate.tool.ant.HibernateToolTask"
+											classpathref="toolslib" />
+										<hibernatetool destdir="${basedir}/src/main/java">
+											<jdbcconfiguration
+												configurationfile="${basedir}/src/main/resources/hibernate.cfg.xml"
+												revengfile="${basedir}/src/main/resources/hibernate.reveng.xml"
+												packageName="com.lm.domain.gen2" />
+											<hbm2java jdk5="true" ejb3="true">
+												<property key="fieldAnnotations" value="true" />
+											</hbm2java>
+										</hibernatetool>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
