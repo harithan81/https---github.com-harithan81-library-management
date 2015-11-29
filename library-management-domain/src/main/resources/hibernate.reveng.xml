@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering 
+  SYSTEM "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+	<schema-selection match-schema="dbo" />
+
+	<table-filter match-name="Book" match-catalog="chorus"
+		match-schema="dbo" />
+	<table-filter match-name="BookType" match-catalog="chorus"
+		match-schema="dbo" />
+	<table catalog="chorus" schema="dbo" name="Book">
+		<primary-key>
+			<generator class="identity" />
+		</primary-key>
+	</table>
+</hibernate-reverse-engineering>
