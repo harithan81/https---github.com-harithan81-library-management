@@ -11,15 +11,15 @@ import com.mysema.query.types.Predicate;
 
 @Service
 public class AddressService {
-	@Autowired
-	AddressRepository addressRepository;
+    @Autowired
+    private AddressRepository addressRepository;
 
-	public Address findOne(int addressId) {
-		return addressRepository.findOne(addressId);
-	}
+    public Address findOne(int addressId) {
+        return addressRepository.findOne(addressId);
+    }
 
-	public Page<Address> findAll(Predicate predicate, Pageable pageable) {
-		return addressRepository.findAll(predicate, pageable);
-	}
+    public Page<Address> findAll(Predicate predicate, Pageable pageable) {
+        return addressRepository.findAll(predicate, pageable);
+    }
 
 }
