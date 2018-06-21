@@ -9,7 +9,7 @@ import com.lm.repository.UserRepository;
 @Service
 public class UserService {
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	public User findOne(String userId) {
 		return userRepository.findOne(userId);

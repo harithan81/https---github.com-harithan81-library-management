@@ -9,7 +9,7 @@ import com.lm.repository.BookStatusesRepository;
 @Service
 public class BookStatusesService {
 	@Autowired
-	BookStatusesRepository bookStatusesRepository;
+	private BookStatusesRepository bookStatusesRepository;
 	public BookStatuses findOne(int bookStatusId){
 		return bookStatusesRepository.findOne(bookStatusId);
 		
